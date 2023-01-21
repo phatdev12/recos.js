@@ -17,7 +17,7 @@ export class VoiceClient extends EventEmitter {
     this.client = client;
     if(!this.client) new Error('Missing client from discord.js');
     // Send ready event to continue
-    this.client.on(Events.ClientReady, () => {this.emit('ready')})
+    if(this.client.isReady()) this.emit('ready')
   }
 
   /**
